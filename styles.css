@@ -611,26 +611,86 @@ body {
         max-width: none;
     }
     
+    /* Mobile calendar - list view instead of grid */
     .calendar-grid {
-        grid-template-columns: repeat(7, 1fr);
-        gap: 8px; /* Reduced gap for mobile */
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
         padding: 10px;
-        min-width: 600px; /* Ensure minimum width for readability */
+        overflow-x: hidden;
+    }
+    
+    /* Hide weekday headers on mobile */
+    .weekday-header {
+        display: none;
     }
     
     .day-cell {
-        min-height: 100px; /* Reduced height for mobile */
-        padding: 8px; /* Reduced padding for mobile */
-        border-radius: var(--radius-sm);
-        margin-bottom: 5px; /* Reduced margin for mobile */
+        min-height: 80px; /* Reduced height for mobile */
+        padding: 12px; /* Reduced padding for mobile */
+        border-radius: var(--radius);
+        margin-bottom: 0; /* Remove bottom margin */
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 15px;
+        min-width: auto; /* Remove min-width constraint */
     }
     
     .day-number {
-        font-size: 1rem;
+        font-size: 1.2rem;
+        font-weight: 700;
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        background: var(--bg-color);
+        border: 1px solid var(--border-color);
+        flex-shrink: 0;
+    }
+    
+    .day-cell.today .day-number {
+        background: linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(59, 130, 246, 0.1));
+        border-color: var(--primary-color);
+        color: var(--primary-color);
+        font-weight: 700;
+    }
+    
+    .day-cell.other-month .day-number {
+        background: var(--bg-color);
+        border-style: dashed;
+        opacity: 0.6;
     }
     
     .events-preview {
-        max-height: 30px;
+        display: flex;
+        flex-direction: row;
+        gap: 8px;
+        margin-top: 0;
+        max-height: 20px;
+        flex: 1;
+        justify-content: flex-start;
+    }
+    
+    .event-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        flex-shrink: 0;
+    }
+    
+    .event-indicator {
+        position: static;
+        margin-left: auto;
+        width: 24px;
+        height: 24px;
+        font-size: 0.8rem;
+    }
+    
+    .events-preview + .event-indicator {
+        margin-left: 10px;
     }
     
     .form-row {
@@ -645,21 +705,21 @@ body {
 
 /* Extra small screens */
 @media (max-width: 480px) {
-    .calendar-grid {
-        grid-template-columns: repeat(7, 1fr);
-        gap: 6px; /* Even smaller gap */
-        padding: 8px;
-        min-width: 500px; /* Slightly smaller minimum width */
-    }
-    
     .day-cell {
-        min-height: 90px; /* Even smaller height */
-        padding: 6px; /* Even smaller padding */
-        margin-bottom: 3px; /* Even smaller margin */
+        min-height: 70px; /* Even smaller height */
+        padding: 10px; /* Even smaller padding */
     }
     
     .day-number {
-        font-size: 0.9rem;
+        font-size: 1.1rem;
+        width: 35px;
+        height: 35px;
+    }
+    
+    .event-indicator {
+        width: 20px;
+        height: 20px;
+        font-size: 0.7rem;
     }
     
     .header-content {
