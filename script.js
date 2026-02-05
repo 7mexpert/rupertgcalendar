@@ -538,3 +538,24 @@ class RupertGCalendar {
 document.addEventListener('DOMContentLoaded', () => {
     new RupertGCalendar();
 });
+
+// Auto-scroll function for mobile devices
+function autoScrollToBottom() {
+    // Check if we're on a mobile device
+    const isMobile = window.innerWidth <= 768;
+    
+    if (isMobile) {
+        // Smooth scroll to the bottom of the page
+        window.scrollTo({
+            top: document.body.scrollHeight,
+            behavior: 'smooth'
+        });
+    }
+}
+
+// Add auto-scroll when clicking day cells on mobile
+document.addEventListener('click', (e) => {
+    if (e.target.closest('.day-cell')) {
+        autoScrollToBottom();
+    }
+});
