@@ -440,6 +440,15 @@ body {
     transform: translateY(20px);
     transition: var(--transition);
     animation: modalSlideIn 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    max-height: 90vh; /* Limit height on mobile */
+}
+
+.modal-content {
+    padding: 20px;
+    overflow-y: auto; /* Make content scrollable */
+    max-height: calc(90vh - 120px); /* Account for header and actions */
 }
 
 @keyframes modalSlideIn {
