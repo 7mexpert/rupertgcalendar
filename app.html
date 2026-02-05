@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RupertG Calendar - Download App</title>
+    <link rel="stylesheet" href="app-styles.css">
+    <link rel="icon" href="/assets/favicon.png" type="image/png">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <meta name="description" content="Download RupertG Calendar Android app for the best calendar experience">
+    <meta name="theme-color" content="#3b82f6">
+</head>
+<body>
+    <div class="app-download-container">
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <div class="hero-content">
+                <div class="app-icon-container">
+                    <div class="app-icon">
+                        <img src="/assets/favicon.png" alt="RupertG Calendar" class="favicon-icon">
+                    </div>
+                </div>
+                <h1 class="app-title">RupertG Calendar</h1>
+                <p class="app-subtitle">Beautiful. Simple. Powerful.</p>
+            </div>
+        </section>
+
+        <!-- Download Section -->
+        <section class="download-section">
+            <div class="download-content">
+                <h2>Download for Android</h2>
+                <p class="download-subtitle">Get the full experience on your mobile device</p>
+                
+                    
+                    <a href="/assets/rupertgcalendar.apk" download="rupertgcalendar.apk" class="download-btn">
+                        <i class="fas fa-download"></i>
+                        <span>Download APK</span>
+                    </a>
+                    
+                    <div class="install-guide">
+                        <h3>Installation Guide</h3>
+                        <div class="step">
+                            <div class="step-number">1</div>
+                            <div class="step-content">
+                                <strong>Enable Unknown Sources</strong>
+                                <p>Go to Settings > Security > Unknown Sources</p>
+                            </div>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">2</div>
+                            <div class="step-content">
+                                <strong>Download & Install</strong>
+                                <p>Tap the download button above and install the APK</p>
+                            </div>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">3</div>
+                            <div class="step-content">
+                                <strong>Enjoy!</strong>
+                                <p>Open the app and start organizing your life</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section class="features-section">
+            <div class="features-content">
+                <h2>Amazing Features</h2>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-bolt"></i>
+                        </div>
+                        <h3>Lightning Fast</h3>
+                        <p>Optimized for performance with smooth animations</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-paint-brush"></i>
+                        </div>
+                        <h3>Beautiful Design</h3>
+                        <p>Modern UI with dark mode support</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-sync-alt"></i>
+                        </div>
+                        <h3>Recurring Events</h3>
+                        <p>Set up daily, weekly, monthly events</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-mobile-alt"></i>
+                        </div>
+                        <h3>Mobile Optimized</h3>
+                        <p>Perfect experience on any screen size</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    <script>
+        // Smooth scrolling for download button
+        document.addEventListener('DOMContentLoaded', function() {
+            const downloadBtn = document.querySelector('.download-btn');
+            if (downloadBtn) {
+                downloadBtn.addEventListener('click', function(e) {
+                    // Add ripple effect
+                    const ripple = document.createElement('span');
+                    ripple.classList.add('ripple');
+                    this.appendChild(ripple);
+                    
+                    setTimeout(() => {
+                        ripple.remove();
+                    }, 600);
+                });
+            }
+
+            // Animate features on scroll
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.feature-card').forEach(card => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                card.style.transition = 'all 0.6s ease';
+                observer.observe(card);
+            });
+        });
+    </script>
+</body>
+</html>
